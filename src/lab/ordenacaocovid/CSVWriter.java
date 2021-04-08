@@ -19,6 +19,7 @@ public class CSVWriter {
                 writer.write(dadosEmString);
             }
             writer.close();
+            
         } catch (IOException error) {
             System.err.println("Erro ao escrever linha.");
         }
