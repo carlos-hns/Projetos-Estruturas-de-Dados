@@ -8,10 +8,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CSVReader {
-    static CovidData[] getData(String path) {
+    static CovidData[] lerDados(String caminho) {
         List<CovidData> data = new ArrayList<CovidData>();
         try {
-            FileReader fileReader = new FileReader(path);
+            FileReader fileReader = new FileReader(caminho);
             BufferedReader reader = new BufferedReader(fileReader);
 
             String linha = "";
@@ -23,6 +23,7 @@ public class CSVReader {
                 }
                 data.add(new CovidData(linha));
             }
+            reader.close();
         } catch (FileNotFoundException error) {
             System.err.println("Não foi possível encontrar o arquivo.");
         } catch (IOException error) {
