@@ -9,8 +9,8 @@ public class CSVWriter {
     static void escreverDados(CovidData[] dados, String caminhoParaSalvar) {
         try {
             File arquivo = new File(caminhoParaSalvar);
-            FileWriter fileReader = new FileWriter(arquivo);
-            BufferedWriter writer = new BufferedWriter(fileReader);
+            FileWriter fileWriter = new FileWriter(arquivo);
+            BufferedWriter writer = new BufferedWriter(fileWriter);
 
             writer.write("date,state,city,place_type,confirmed,deaths,is_last,estimated_population,city_ibge_code,confirmed_per_100k_inhabitants,death_rate\n");
 
@@ -20,7 +20,7 @@ public class CSVWriter {
             }
             writer.close();
         } catch (IOException error) {
-            System.err.println("Erro ao ler linha.");
+            System.err.println("Erro ao escrever linha.");
         }
     }
 
