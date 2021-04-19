@@ -8,7 +8,9 @@ public class CovidData {
     private String tipoDoLugar;
     private int casosConfirmados;
     private int mortes;
+    private int orderForPlace;
     private boolean dadoAtualizado;
+    private int populacaoEstimada2019;
     private int populacaoEstimada;
     private int ibgeCode;
     private double confirmados100MilHabitantes;
@@ -20,11 +22,13 @@ public class CovidData {
     private static final int tipoDoLugarIndex = 3;
     private static final int casosConfirmadorIndex = 4;
     private static final int mortesIndex = 5;
-    private static final int dadoAtualizadoIndex = 6;
-    private static final int populacaoEstimadaIndex = 7;
-    private static final int ibgeCodeIndex = 8;
-    private static final int confirmados100MilHabitantesIndex = 9;
-    private static final int taxaDeMorteIndex = 10;
+    private static final int orderForPlaceIndex = 6;
+    private static final int dadoAtualizadoIndex = 7;
+    private static final int populacaoEstimada2019Index = 8;
+    private static final int populacaoEstimadaIndex = 9;
+    private static final int ibgeCodeIndex = 10;
+    private static final int confirmados100MilHabitantesIndex = 11;
+    private static final int taxaDeMorteIndex = 12;
 
     public CovidData() {}
     public CovidData(String CVSLine) {
@@ -39,7 +43,9 @@ public class CovidData {
         this.tipoDoLugar = colunas[tipoDoLugarIndex];
         this.casosConfirmados = !colunas[casosConfirmadorIndex].equals("") ? Integer.parseInt(colunas[casosConfirmadorIndex]) : 0;
         this.mortes = !colunas[mortesIndex].equals("") ? Integer.parseInt(colunas[mortesIndex]): 0;
+        this.orderForPlace = !colunas[orderForPlaceIndex].equals("") ? Integer.parseInt(colunas[orderForPlaceIndex]) : 0;
         this.dadoAtualizado = colunas[dadoAtualizadoIndex].equals("True");
+        this.populacaoEstimada2019 = !colunas[populacaoEstimada2019Index].equals("") ? Integer.parseInt(colunas[populacaoEstimada2019Index]) : 0;
         this.populacaoEstimada = !colunas[populacaoEstimadaIndex].equals("") ? Integer.parseInt(colunas[populacaoEstimadaIndex]) : 0;
         this.ibgeCode = !colunas[ibgeCodeIndex].equals("") ? Integer.parseInt(colunas[ibgeCodeIndex]) : 0;
         this.confirmados100MilHabitantes = !colunas[confirmados100MilHabitantesIndex].equals("") ? Double.parseDouble(colunas[confirmados100MilHabitantesIndex]) : 0;
@@ -50,20 +56,8 @@ public class CovidData {
         return CSVLine.split(",");
     }
 
-    public String getData() {
-        return data;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
     public String getCidade() {
         return cidade;
-    }
-
-    public String getTipoDoLugar() {
-        return tipoDoLugar;
     }
 
     public int getCasosConfirmados() {
@@ -72,26 +66,6 @@ public class CovidData {
 
     public int getMortes() {
         return mortes;
-    }
-
-    public boolean isDadoAtualizado() {
-        return dadoAtualizado;
-    }
-
-    public int getPopulacaoEstimada() {
-        return populacaoEstimada;
-    }
-
-    public int getIbgeCode() {
-        return ibgeCode;
-    }
-
-    public double getConfirmados100MilHabitantes() {
-        return confirmados100MilHabitantes;
-    }
-
-    public double getTaxaDeMorte() {
-        return taxaDeMorte;
     }
 
     public void setCidade(String cidade) {
@@ -108,10 +82,6 @@ public class CovidData {
 
     @Override
     public String toString() {
-        return "CovidData{" +
-                "cidade='" + cidade + '\'' +
-                ", casosConfirmados=" + casosConfirmados +
-                ", mortes=" + mortes +
-                '}';
+        return String.format("CovidData{cidade=\'%s\', casosConfirmados=%d, mortes=%d", this.cidade, this.casosConfirmados, this.mortes);
     }
 }
