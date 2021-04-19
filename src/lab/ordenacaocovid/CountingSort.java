@@ -1,5 +1,7 @@
 package lab.ordenacaocovid;
 
+import java.util.Arrays;
+
 public class CountingSort {
 
     public static CovidData[] ordenarPorObitos(CovidData[] originalVector) {
@@ -13,14 +15,12 @@ public class CountingSort {
             vectorOfPositionsInExitVector[originalVector[i].getMortes()] += 1;
         }
 
-        //System.out.println(Arrays.toString(vectorContainingNumbersBetween0AndNumberMaximumOfArray));
-
         // Here has the positions of each number in exit vector
         for (int i = 1; i <= numberMaximum; i++) {
             vectorOfPositionsInExitVector[i] += vectorOfPositionsInExitVector[i - 1];
         }
 
-        for(int i = originalVector.length - 1; i > 0; i--) {
+        for(int i = originalVector.length - 1; i >= 0; i--) {
             exitVector[vectorOfPositionsInExitVector[originalVector[i].getMortes()] - 1] = originalVector[i];
             vectorOfPositionsInExitVector[originalVector[i].getMortes()] -= 1;
         }
@@ -37,20 +37,18 @@ public class CountingSort {
             vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] += 1;
         }
 
-        //System.out.println(Arrays.toString(vectorContainingNumbersBetween0AndNumberMaximumOfArray));
-
         // Here has the positions of each number in exit vector
         for (int i = 1; i <= numberMaximum; i++) {
             vectorOfPositionsInExitVector[i] += vectorOfPositionsInExitVector[i - 1];
         }
 
-        for(int i = originalVector.length - 1; i > 0; i--) {
+        for(int i = originalVector.length - 1; i >= 0; i--) {
             exitVector[vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] - 1] = originalVector[i];
             vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] -= 1;
         }
+
         return exitVector;
     }
-    public static void ordenarPorNomeDasCidades(CovidData[] vector) {}
 
     private static int findMaximumNumberObitos(CovidData[] vector) {
         int numberMaximum = 0;
