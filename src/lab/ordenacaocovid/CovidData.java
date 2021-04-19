@@ -26,6 +26,7 @@ public class CovidData {
     private static final int confirmados100MilHabitantesIndex = 9;
     private static final int taxaDeMorteIndex = 10;
 
+    public CovidData() {}
     public CovidData(String CVSLine) {
         this.setarAtributos(CVSLine);
     }
@@ -91,5 +92,26 @@ public class CovidData {
 
     public double getTaxaDeMorte() {
         return taxaDeMorte;
+    }
+
+    public void setCidade(String cidade) {
+        this.cidade = cidade;
+    }
+
+    public void setCasosConfirmados(int casosConfirmados) {
+        this.casosConfirmados = casosConfirmados;
+    }
+
+    public void setMortes(int mortes) {
+        this.mortes = mortes;
+    }
+
+    @Override
+    public String toString() {
+        return "CovidData{" +
+                "cidade='" + cidade + '\'' +
+                ", casosConfirmados=" + casosConfirmados +
+                ", mortes=" + mortes +
+                '}';
     }
 }
