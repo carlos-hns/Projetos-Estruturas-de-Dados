@@ -56,7 +56,7 @@ public class Timer {
     return temporaryFinalTime;
   }
   
-  public long[] getSeletionTime(int index) {
+  public long getSeletionTime(int index) {
     return seletionTime[index];
   }
 
@@ -66,23 +66,23 @@ public class Timer {
   }
 
   
-  public long[] getMergeTime(int index) {
+  public long getMergeTime(int index) {
     return mergeTime[index];
   }
   
-  public long[] getQuickTime(int index) {
+  public long getQuickTime(int index) {
     return quickTime[index];
   }
   
-  public long[] getQuickMedTime(int index) {
+  public long getQuickMedTime(int index) {
     return quickMedTime[index];
   }
   
-  public long[] getCountingTime(int index) {
+  public long getCountingTime(int index) {
     return countingTime[index];
   }
   
-  public long[] getHeapTime(int index) {
+  public long getHeapTime(int index) {
     return heapTime[index];
   }
   
