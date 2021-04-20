@@ -1,4 +1,6 @@
-package lab.ordenacaocovid;
+package lab.ordenacaocovid.algoritmos;
+
+import lab.ordenacaocovid.utils.CovidData;
 
 public class QuickSort {
 

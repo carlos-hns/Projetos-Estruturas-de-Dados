@@ -1,4 +1,4 @@
-package lab.ordenacaocovid;
+package lab.ordenacaocovid.utils;
 
 public class CovidData {
 

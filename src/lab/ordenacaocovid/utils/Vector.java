@@ -1,12 +1,12 @@
-package lab.ordenacaocovid;
+package lab.ordenacaocovid.utils;
 
 import java.util.Arrays;
 
-public class Vector {
+public class Vector<T> {
 
     private int size;
     private int capacity;
-    private Object[] elements;
+    private T[] elements;
 
     public Vector(int capacity) {
         this.size = 0;
@@ -14,17 +14,19 @@ public class Vector {
         this.instantiateElements(capacity);
     }
 
+    @SuppressWarnings("unchecked")
     private void instantiateElements(int size) {
-        this.elements = new Object[size];
+        this.elements = (T[]) new Object[size];
     }
 
     private void updateCapacity() {
         this.capacity = this.elements.length;
     }
 
+    @SuppressWarnings("unchecked")
     private void increaseSize() {
         if (this.size == this.capacity) {
-            Object[] newElements = new Object[this.capacity * 2];
+            T[] newElements = (T[]) new Object[this.capacity * 2];
             for (int i = 0; i < this.size; i++) {
                 newElements[i] = this.elements[i];
             }
@@ -33,7 +35,7 @@ public class Vector {
         updateCapacity();
     }
 
-    public boolean add(Object element) {
+    public boolean add(T element) {
         increaseSize();
         if (this.size < this.capacity) {
             this.elements[this.size++] = element;

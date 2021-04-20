@@ -1,6 +1,7 @@
 package lab.ordenacaocovid.testes;
 
-import lab.ordenacaocovid.*;
+import lab.ordenacaocovid.algoritmos.*;
+import lab.ordenacaocovid.utils.CovidData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

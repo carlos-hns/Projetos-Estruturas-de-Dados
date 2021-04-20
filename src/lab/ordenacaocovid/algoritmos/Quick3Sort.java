@@ -1,6 +1,6 @@
-package lab.ordenacaocovid;
+package lab.ordenacaocovid.algoritmos;
 
-import java.util.Arrays;
+import lab.ordenacaocovid.utils.CovidData;
 
 public class Quick3Sort {
 

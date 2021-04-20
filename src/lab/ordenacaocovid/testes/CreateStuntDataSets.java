@@ -1,6 +1,6 @@
 package lab.ordenacaocovid.testes;
 
-import lab.ordenacaocovid.CovidData;
+import lab.ordenacaocovid.utils.CovidData;
 
 public class CreateStuntDataSets {
 
