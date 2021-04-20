@@ -60,6 +60,14 @@ public class Vector<T> {
         return elements[index];
     }
 
+    public void insert(T element, int position) throws ArrayIndexOutOfBoundsException {
+        if(position < 0) throw new ArrayIndexOutOfBoundsException("Invalid index.");
+        if(position > this.size) throw new ArrayIndexOutOfBoundsException("Invalid index, if you want insert a element in the last position use method add without position.");
+        this.elements[position] = element;
+    }
+
+
+
     public int size() {
         return this.size;
     }
