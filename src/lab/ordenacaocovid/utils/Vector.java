@@ -8,15 +8,16 @@ public class Vector<T> {
     private int capacity;
     private T[] elements;
 
-    public Vector(int capacity) {
+    public Vector(int capacity) throws IllegalArgumentException {
+        if (capacity <= 0) throw new IllegalArgumentException("Invalid amount, must be > 0.");
         this.size = 0;
         this.capacity = capacity;
         this.instantiateElements(capacity);
     }
 
     @SuppressWarnings("unchecked")
-    private void instantiateElements(int size) {
-        this.elements = (T[]) new Object[size];
+    private void instantiateElements(int capacity) {
+        this.elements = (T[]) new Object[capacity];
     }
 
     private void updateCapacity() {
@@ -35,15 +36,17 @@ public class Vector<T> {
         updateCapacity();
     }
 
-    public boolean add(T element) {
+    public void add(T element) throws Exception {
         increaseSize();
         if (this.size < this.capacity) {
             this.elements[this.size++] = element;
-            // Consegui adicionar
-            return true;
         }
-        // Não consegui adicionar
-        return false;
+        throw new Exception("Failure on add item.");
+    }
+
+    public T findWithIndex(int index) throws ArrayIndexOutOfBoundsException {
+        if(index < 0 || index > this.size) throw new ArrayIndexOutOfBoundsException("Índice inválido.");
+        return elements[index];
     }
 
     public int size() {
