@@ -56,13 +56,13 @@ public class Vector<T> {
 
 
     public T findWithIndex(int index) throws ArrayIndexOutOfBoundsException {
-        if(index < 0 || index > this.size) throw new ArrayIndexOutOfBoundsException("Invalid index.");
+        if(index < 0 || index > this.capacity) throw new ArrayIndexOutOfBoundsException("Invalid index.");
         return elements[index];
     }
 
     public void insert(T element, int position) throws ArrayIndexOutOfBoundsException {
         if(position < 0) throw new ArrayIndexOutOfBoundsException("Invalid index.");
-        if(position > this.size) throw new ArrayIndexOutOfBoundsException("Invalid index, if you want insert a element in the last position use method add without position.");
+        if(position > this.capacity) throw new ArrayIndexOutOfBoundsException("Invalid index, if you want insert a element in the last position use method add without position.");
         this.elements[position] = element;
     }
 

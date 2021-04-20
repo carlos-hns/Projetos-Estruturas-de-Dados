@@ -1,18 +1,19 @@
 package lab.ordenacaocovid.algoritmos;
 
 import lab.ordenacaocovid.utils.CovidData;
+import lab.ordenacaocovid.utils.Vector;
 
 public class CountingSort {
 
-    public static CovidData[] ordenarPorObitos(CovidData[] originalVector) {
-        CovidData[] exitVector = new CovidData[originalVector.length];
+    public static Vector<CovidData> ordenarPorObitos(Vector<CovidData> originalVector) {
+        Vector<CovidData> exitVector = new Vector<CovidData>(originalVector.size());
 
         int numberMaximum = findMaximumNumberObitos(originalVector);
         int[] vectorOfPositionsInExitVector = new int[numberMaximum + 1];
 
         // Here has the amount of each number possible in original vector
-        for (int i = 0; i < originalVector.length; i++) {
-            vectorOfPositionsInExitVector[originalVector[i].getMortes()] += 1;
+        for (int i = 0; i < originalVector.size(); i++) {
+            vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getMortes()] += 1;
         }
 
         // Here has the positions of each number in exit vector
@@ -20,21 +21,22 @@ public class CountingSort {
             vectorOfPositionsInExitVector[i] += vectorOfPositionsInExitVector[i - 1];
         }
 
-        for(int i = originalVector.length - 1; i >= 0; i--) {
-            exitVector[vectorOfPositionsInExitVector[originalVector[i].getMortes()] - 1] = originalVector[i];
-            vectorOfPositionsInExitVector[originalVector[i].getMortes()] -= 1;
+        for(int i = originalVector.size() - 1; i >= 0; i--) {
+            exitVector.insert(originalVector.findWithIndex(i), vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getMortes()] - 1);
+            vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getMortes()] -= 1;
         }
         return exitVector;
     }
-    public static CovidData[] ordenarPorCasos(CovidData[] originalVector) {
-        CovidData[] exitVector = new CovidData[originalVector.length];
+
+    public static Vector<CovidData> ordenarPorCasos(Vector<CovidData> originalVector) {
+        Vector<CovidData> exitVector = new Vector<CovidData>(originalVector.size());
 
         int numberMaximum = findMaximumNumberCasos(originalVector);
         int[] vectorOfPositionsInExitVector = new int[numberMaximum + 1];
 
         // Here has the amount of each number possible in original vector
-        for (int i = 0; i < originalVector.length; i++) {
-            vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] += 1;
+        for (int i = 0; i < originalVector.size(); i++) {
+            vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getCasosConfirmados()] += 1;
         }
 
         // Here has the positions of each number in exit vector
@@ -42,27 +44,27 @@ public class CountingSort {
             vectorOfPositionsInExitVector[i] += vectorOfPositionsInExitVector[i - 1];
         }
 
-        for(int i = originalVector.length - 1; i >= 0; i--) {
-            exitVector[vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] - 1] = originalVector[i];
-            vectorOfPositionsInExitVector[originalVector[i].getCasosConfirmados()] -= 1;
+        for(int i = originalVector.size() - 1; i >= 0; i--) {
+            exitVector.insert(originalVector.findWithIndex(i), vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getCasosConfirmados()] - 1);
+            vectorOfPositionsInExitVector[originalVector.findWithIndex(i).getCasosConfirmados()] -= 1;
         }
-
         return exitVector;
     }
 
-    private static int findMaximumNumberObitos(CovidData[] vector) {
+    private static int findMaximumNumberObitos(Vector<CovidData> vector) {
         int numberMaximum = 0;
-        for (int i = 0; i < vector.length; i++) {
-            if(vector[i].getMortes() > numberMaximum) numberMaximum = vector[i].getMortes();
+        for (int i = 0; i < vector.size(); i++) {
+            if(vector.findWithIndex(i).getMortes() > numberMaximum) numberMaximum = vector.findWithIndex(i).getMortes();
         }
         return numberMaximum;
     }
 
-    private static int findMaximumNumberCasos(CovidData[] vector) {
+    private static int findMaximumNumberCasos(Vector<CovidData>  vector) {
         int numberMaximum = 0;
-        for (int i = 0; i < vector.length; i++) {
-            if(vector[i].getCasosConfirmados() > numberMaximum) numberMaximum = vector[i].getCasosConfirmados();
+        for (int i = 0; i < vector.size(); i++) {
+            if(vector.findWithIndex(i).getCasosConfirmados() > numberMaximum) numberMaximum = vector.findWithIndex(i).getCasosConfirmados();
         }
         return numberMaximum;
     }
+
 }
