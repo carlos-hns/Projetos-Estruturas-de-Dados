@@ -1,6 +1,7 @@
 package lab.ordenacaocovid.algoritmos;
 
 import lab.ordenacaocovid.utils.CovidData;
+import lab.ordenacaocovid.utils.Vector;
 
 public class QuickSort {
 
@@ -9,7 +10,7 @@ public class QuickSort {
     public static final int CIDADES = 2;
     private static final String MAX_VALUE = "ÿÿÿÿÿÿ";
 
-    public static void sort(CovidData[] vector, int start, int end, int type) {
+    public static void sort(Vector<CovidData> vector, int start, int end, int type) {
         if(hasMoreElements(start, end)) {
             int pivotIndex = 0;
             switch (type) {
@@ -20,7 +21,7 @@ public class QuickSort {
                     pivotIndex = particionaCasos(vector, start, end);
                     break;
                 case CIDADES:
-                    pivotIndex = particionaCidades(vector, start, end);
+                    //pivotIndex = particionaCidades(vector, start, end);
                     break;
             }
             sort(vector, start, pivotIndex - 1, type);
@@ -28,11 +29,11 @@ public class QuickSort {
         }
     }
 
-    public static int particionaObitos(CovidData[] vector, int start, int end) {
-        int pivot = vector[end].getMortes();
+    public static int particionaObitos(Vector<CovidData> vector, int start, int end) {
+        int pivot = vector.findWithIndex(end).getMortes();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getMortes() <= pivot) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getMortes() <= pivot) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -41,11 +42,11 @@ public class QuickSort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static int particionaCasos(CovidData[] vector, int start, int end) {
-        int pivot = vector[end].getCasosConfirmados();
+    public static int particionaCasos(Vector<CovidData> vector, int start, int end) {
+        int pivot = vector.findWithIndex(end).getMortes();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getCasosConfirmados() <= pivot) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getCasosConfirmados() <= pivot) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -54,11 +55,11 @@ public class QuickSort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static int particionaCidades(CovidData[] vector, int start, int end) {
-        String pivot = vector[end].getCidade();
+    public static int particionaCidades(Vector<CovidData> vector, int start, int end) {
+        String pivot = vector.findWithIndex(end).getCidade();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getCidade().compareTo(pivot) <= 0) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade().compareTo(pivot) <= 0) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -67,10 +68,10 @@ public class QuickSort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static void exchangeElements(CovidData[] vector, int source, int destination) {
-        CovidData itemHoldedFromSource = vector[source];
-        vector[source] = vector[destination];
-        vector[destination] = itemHoldedFromSource;
+    public static void exchangeElements(Vector<CovidData> vector, int source, int destination) {
+        CovidData itemHoldedFromSource = vector.findWithIndex(source);
+        vector.insert(vector.findWithIndex(destination), source);
+        vector.insert(itemHoldedFromSource, destination);
     }
 
     public static boolean hasMoreElements(int start, int end) {
