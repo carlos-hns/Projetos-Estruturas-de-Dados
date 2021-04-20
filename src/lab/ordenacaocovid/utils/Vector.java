@@ -36,16 +36,27 @@ public class Vector<T> {
         updateCapacity();
     }
 
-    public void add(T element) throws Exception {
+    public void add(T element) {
         increaseSize();
         if (this.size < this.capacity) {
             this.elements[this.size++] = element;
         }
-        throw new Exception("Failure on add item.");
     }
 
+    public void add(T element, int position) throws ArrayIndexOutOfBoundsException {
+        if(position < 0) throw new ArrayIndexOutOfBoundsException("Invalid index.");
+        if(position > this.size) throw new ArrayIndexOutOfBoundsException("Invalid index, if you want insert a element in the last position use method add without position.");
+        increaseSize();
+        for (int currentPosition = this.size -1 ; currentPosition >= position; currentPosition--) {
+            this.elements[currentPosition + 1] = this.elements[currentPosition];
+        }
+        this.elements[position] = element;
+        this.size++;
+    }
+
+
     public T findWithIndex(int index) throws ArrayIndexOutOfBoundsException {
-        if(index < 0 || index > this.size) throw new ArrayIndexOutOfBoundsException("Índice inválido.");
+        if(index < 0 || index > this.size) throw new ArrayIndexOutOfBoundsException("Invalid index.");
         return elements[index];
     }
 
@@ -55,6 +66,6 @@ public class Vector<T> {
 
     @Override
     public String toString() {
-        return String.format("Vector{type='%s', elements=%s}", this.elements[0].getClass(), Arrays.toString(elements));
+        return Arrays.toString(this.elements);
     }
 }
