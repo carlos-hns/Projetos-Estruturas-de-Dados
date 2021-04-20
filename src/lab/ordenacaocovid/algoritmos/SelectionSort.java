@@ -1,62 +1,51 @@
 package lab.ordenacaocovid.algoritmos;
 
 import lab.ordenacaocovid.utils.CovidData;
+import lab.ordenacaocovid.utils.Vector;
 
 public class SelectionSort {
-    public static void ordenarPorObitos(CovidData[] vector) {
-        int vectorSize = vector.length;
-        for (int i = 0; i < vectorSize; i++) {
-            CovidData currentCovidDataToOrder = vector[i];
+    public static void ordenarPorObitos(Vector<CovidData> vector) {
+        for (int i = 0; i < vector.size(); i++) {
+            CovidData currentCovidDataToOrder = vector.findWithIndex(i);
             int lowestCovidDataIndex = i;
             int nextCovidDataOfSearch = i + 1;
-            for (int j = nextCovidDataOfSearch; j < vectorSize; j++) {
-                if(vector[j].getMortes() < vector[lowestCovidDataIndex].getMortes()) {
+            for (int j = nextCovidDataOfSearch; j < vector.size(); j++) {
+                if(vector.findWithIndex(j).getMortes() < vector.findWithIndex(lowestCovidDataIndex).getMortes()) {
                     lowestCovidDataIndex = j;
                 }
             }
-            vector[i] = vector[lowestCovidDataIndex];
-            vector[lowestCovidDataIndex] = currentCovidDataToOrder;
+            vector.insert(vector.findWithIndex(lowestCovidDataIndex), i);
+            vector.insert(currentCovidDataToOrder, lowestCovidDataIndex);
         }
     }
 
-    public static void ordenarPorCasos(CovidData[] vector) {
-        int vectorSize = vector.length;
-        for (int i=0; i < vectorSize; i++) {
-            CovidData currentCovidDataToOrder = vector[i];
+    public static void ordenarPorCasos(Vector<CovidData> vector) {
+        for (int i=0; i < vector.size(); i++) {
+            CovidData currentCovidDataToOrder = vector.findWithIndex(i);
             int lowestCovidDataIndex = i;
             int nextCovidDataOfSearch = i + 1;
-            for (int j = nextCovidDataOfSearch; j < vectorSize; j++) {
-                if(vector[j].getCasosConfirmados() < vector[lowestCovidDataIndex].getCasosConfirmados()) {
+            for (int j = nextCovidDataOfSearch; j < vector.size(); j++) {
+                if(vector.findWithIndex(j).getCasosConfirmados() < vector.findWithIndex(lowestCovidDataIndex).getCasosConfirmados()) {
                     lowestCovidDataIndex = j;
                 }
             }
-            vector[i] = vector[lowestCovidDataIndex];
-            vector[lowestCovidDataIndex] = currentCovidDataToOrder;
+            vector.insert(vector.findWithIndex(lowestCovidDataIndex), i);
+            vector.insert(currentCovidDataToOrder, lowestCovidDataIndex);
         }
     }
 
-    public static void ordenarPorNomeDasCidades(CovidData[] vector) {
-        int firstCharWithAccent = 192;
-        int vectorSize = vector.length;
-        for (int i=0; i < vectorSize; i++) {
-            CovidData currentCovidDataToOrder = vector[i];
+    public static void ordenarPorNomeDasCidades(Vector<CovidData> vector) {
+        for (int i=0; i < vector.size(); i++) {
+            CovidData currentCovidDataToOrder = vector.findWithIndex(i);
             int lowestCovidDataIndex = i;
             int nextCovidDataOfSearch = i + 1;
-            for (int j = nextCovidDataOfSearch; j < vectorSize; j++) {
-                int lowestElementFirstChar = (int) vector[lowestCovidDataIndex].getCidade().charAt(0);
-                int currentSearchingElementFirstChar = (int) vector[j].getCidade().charAt(0);
-                if (currentSearchingElementFirstChar > lowestElementFirstChar && currentSearchingElementFirstChar >= firstCharWithAccent) {
+            for (int j = nextCovidDataOfSearch; j < vector.size(); j++) {
+                if (vector.findWithIndex(j).getCidade().compareTo(vector.findWithIndex(lowestCovidDataIndex).getCidade()) < 0) {
                     lowestCovidDataIndex = j;
-                } else {
-                    if(lowestElementFirstChar >= firstCharWithAccent) {
-                        continue;
-                    } else if ((vector[j].getCidade().compareTo(vector[lowestCovidDataIndex].getCidade())) < 0) {
-                        lowestCovidDataIndex = j;
-                    }
                 }
             }
-            vector[i] = vector[lowestCovidDataIndex];
-            vector[lowestCovidDataIndex] = currentCovidDataToOrder;
+            vector.insert(vector.findWithIndex(lowestCovidDataIndex), i);
+            vector.insert(currentCovidDataToOrder, lowestCovidDataIndex);
         }
     }
 

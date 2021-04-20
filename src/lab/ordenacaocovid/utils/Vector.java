@@ -66,8 +66,6 @@ public class Vector<T> {
         this.elements[position] = element;
     }
 
-
-
     public int size() {
         return this.size;
     }
