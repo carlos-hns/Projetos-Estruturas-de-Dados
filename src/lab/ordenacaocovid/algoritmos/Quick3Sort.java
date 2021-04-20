@@ -1,6 +1,7 @@
 package lab.ordenacaocovid.algoritmos;
 
 import lab.ordenacaocovid.utils.CovidData;
+import lab.ordenacaocovid.utils.Vector;
 
 public class Quick3Sort {
 
@@ -9,7 +10,7 @@ public class Quick3Sort {
     public static final int CIDADES = 2;
     private static final String MAX_VALUE = "ÿÿÿÿÿÿ";
 
-    public static void sort(CovidData[] vector, int start, int end, int type) {
+    public static void sort(Vector<CovidData> vector, int start, int end, int type) {
         if(hasMoreElements(start, end)) {
             int pivot3Index;
             int pivotIndex = 0;
@@ -35,11 +36,11 @@ public class Quick3Sort {
         }
     }
 
-    public static int particionaObitos(CovidData[] vector, int start, int end) {
-        int pivot = vector[end].getMortes();
+    public static int particionaObitos(Vector<CovidData> vector, int start, int end) {
+        int pivot = vector.findWithIndex(end).getMortes();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getMortes() <= pivot) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getMortes() <= pivot) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -48,11 +49,11 @@ public class Quick3Sort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static int particionaCasos(CovidData[] vector, int start, int end) {
-        int pivot = vector[end].getCasosConfirmados();
+    public static int particionaCasos(Vector<CovidData> vector, int start, int end) {
+        int pivot = vector.findWithIndex(end).getMortes();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getCasosConfirmados() <= pivot) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getCasosConfirmados() <= pivot) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -61,11 +62,11 @@ public class Quick3Sort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static int particionaCidades(CovidData[] vector, int start, int end) {
-        String pivot = vector[end].getCidade();
+    public static int particionaCidades(Vector<CovidData> vector, int start, int end) {
+        String pivot = vector.findWithIndex(end).getCidade();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector[largerItemsThanPivotIndexController].getCidade().compareTo(pivot) <= 0) {
+            if(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade().compareTo(pivot) <= 0) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
@@ -74,20 +75,20 @@ public class Quick3Sort {
         return smallerItemsThanPivotIndexController + 1;
     }
 
-    public static void exchangeElements(CovidData[] vector, int source, int destination) {
-        CovidData itemHoldedFromSource = vector[source];
-        vector[source] = vector[destination];
-        vector[destination] = itemHoldedFromSource;
+    public static void exchangeElements(Vector<CovidData> vector, int source, int destination) {
+        CovidData itemHoldedFromSource = vector.findWithIndex(source);
+        vector.insert(vector.findWithIndex(destination), source);
+        vector.insert(itemHoldedFromSource, destination);
     }
 
-    public static int findPivotObitosIndex(CovidData[] vector, int startIndex, int endIndex) {
+    public static int findPivotObitosIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
         int middleIndex = 0;
-        if (vector.length % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
-        int start = vector[startIndex].getMortes();
-        int end = vector[endIndex].getMortes();
-        int middle = vector[middleIndex].getMortes();
+        int start = vector.findWithIndex(startIndex).getMortes();
+        int end = vector.findWithIndex(endIndex).getMortes();
+        int middle = vector.findWithIndex(middleIndex).getMortes();
         int pivotIndex = 0;
 
         if (start > end) {
@@ -114,14 +115,14 @@ public class Quick3Sort {
         return pivotIndex;
     }
 
-    public static int findPivotCasosIndex(CovidData[] vector, int startIndex, int endIndex) {
+    public static int findPivotCasosIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
         int middleIndex = 0;
-        if (vector.length % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
-        int start = vector[startIndex].getCasosConfirmados();
-        int end = vector[endIndex].getCasosConfirmados();
-        int middle = vector[middleIndex].getCasosConfirmados();
+        int start = vector.findWithIndex(startIndex).getCasosConfirmados();
+        int end = vector.findWithIndex(endIndex).getCasosConfirmados();
+        int middle = vector.findWithIndex(middleIndex).getCasosConfirmados();
         int pivotIndex = 0;
 
         if (start > end) {
@@ -148,14 +149,14 @@ public class Quick3Sort {
         return pivotIndex;
     }
 
-    public static int findPivotCidadesIndex(CovidData[] vector, int startIndex, int endIndex) {
+    public static int findPivotCidadesIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
         int middleIndex = 0;
-        if (vector.length % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
-        String start = vector[startIndex].getCidade();
-        String end = vector[endIndex].getCidade();
-        String middle = vector[middleIndex].getCidade();
+        String start = vector.findWithIndex(startIndex).getCidade();
+        String end = vector.findWithIndex(endIndex).getCidade();
+        String middle = vector.findWithIndex(middleIndex).getCidade();
         int pivotIndex = 0;
 
         if (start.compareTo(end) > 0) {
