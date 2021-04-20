@@ -56,8 +56,20 @@ public class CovidData {
         return CSVLine.split(",");
     }
 
+    public String getData() {
+        return data;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
     public String getCidade() {
         return cidade;
+    }
+
+    public String getTipoDoLugar() {
+        return tipoDoLugar;
     }
 
     public int getCasosConfirmados() {
@@ -66,6 +78,34 @@ public class CovidData {
 
     public int getMortes() {
         return mortes;
+    }
+
+    public int getOrderForPlace() {
+        return orderForPlace;
+    }
+
+    public boolean isDadoAtualizado() {
+        return dadoAtualizado;
+    }
+
+    public int getPopulacaoEstimada2019() {
+        return populacaoEstimada2019;
+    }
+
+    public int getPopulacaoEstimada() {
+        return populacaoEstimada;
+    }
+
+    public int getIbgeCode() {
+        return ibgeCode;
+    }
+
+    public double getConfirmados100MilHabitantes() {
+        return confirmados100MilHabitantes;
+    }
+
+    public double getTaxaDeMorte() {
+        return taxaDeMorte;
     }
 
     public void setCidade(String cidade) {

@@ -13,7 +13,6 @@ public class CSVReader {
         String linha = "";
         boolean isFirstLine = true;
         Vector<CovidData> data = new Vector<CovidData>(1);
-
         try {
             FileReader fileReader = new FileReader(caminho);
             BufferedReader reader = new BufferedReader(fileReader);
