@@ -171,4 +171,33 @@ public class SortAlgorithmsTest {
         for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
     }
 
+    // --------------------------- //
+    // Heap Sort
+    // --------------------------- //
+
+    @Test
+    public void shouldSortDeathsInHeapSort() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedDeathsVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateOrderedDeathsVector();
+        HeapSort.sort(dataUnsorted, HeapSort.OBITOS);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+    @Test
+    public void shouldSortConfirmedsInHeapSort() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedConfirmedVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedConfirmedVector();
+        HeapSort.sort(dataUnsorted, HeapSort.CASOS);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+    @Test
+    public void shouldSortCitysInHeapSort() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedCitysVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedCitysVector();
+        HeapSort.sort(dataUnsorted, HeapSort.CIDADES);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+
 }

@@ -21,7 +21,7 @@ public class QuickSort {
                     pivotIndex = particionaCasos(vector, start, end);
                     break;
                 case CIDADES:
-                    //pivotIndex = particionaCidades(vector, start, end);
+                    pivotIndex = particionaCidades(vector, start, end);
                     break;
             }
             sort(vector, start, pivotIndex - 1, type);
