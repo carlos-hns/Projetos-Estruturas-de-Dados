@@ -3,12 +3,14 @@ package lab.ordenacaocovid.algoritmos;
 import lab.ordenacaocovid.utils.CovidData;
 import lab.ordenacaocovid.utils.Vector;
 
+import java.text.Collator;
+
 public class MergeSort {
 
     public static final int OBITOS = 0;
     public static final int CASOS = 1;
     public static final int CIDADES = 2;
-    private static final String MAX_VALUE = "ÿÿÿÿÿ";
+    private static final String MAX_VALUE = "ŹŹŹŹŹ";
 
     public static void sort(Vector<CovidData> vector, int start, int end, int type) {
         if(hasMoreElements(start, end)) {
@@ -101,6 +103,10 @@ public class MergeSort {
     }
 
     public static void intercalaCidades(Vector<CovidData> vector, int start, int middle, int end) {
+
+        Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.NO_DECOMPOSITION);
+
         int sizeStartToMiddle = middle - start + 1;
         int sizeMiddleToEnd = end - middle;
 
@@ -125,7 +131,7 @@ public class MergeSort {
         int currentMiddleToEndIndex = 0;
 
         for (int currentVectorIndex = start; currentVectorIndex <= end; currentVectorIndex++) {
-            if (vectorStartToMid.findWithIndex(currentStartToMiddleIndex).getCidade().compareTo(vectorMidToEnd.findWithIndex(currentMiddleToEndIndex).getCidade()) < 0) {
+            if (collator.compare(vectorStartToMid.findWithIndex(currentStartToMiddleIndex).getCidade(), vectorMidToEnd.findWithIndex(currentMiddleToEndIndex).getCidade()) < 0) {
                 vector.insert(vectorStartToMid.findWithIndex(currentStartToMiddleIndex), currentVectorIndex);
                 currentStartToMiddleIndex++;
             } else  {

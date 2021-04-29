@@ -3,6 +3,8 @@ package lab.ordenacaocovid.algoritmos;
 import lab.ordenacaocovid.utils.CovidData;
 import lab.ordenacaocovid.utils.Vector;
 
+import java.text.Collator;
+
 public class InsertionSort {
 
     public static void ordenarPorObitos(Vector<CovidData> vector) {
@@ -30,11 +32,15 @@ public class InsertionSort {
     }
 
     public static void ordenarPorNomeDasCidades(Vector<CovidData> vector) {
+
+        Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.NO_DECOMPOSITION);
+
         for(int unsortedElementIndex = 1; unsortedElementIndex < vector.size(); unsortedElementIndex++) {
             CovidData unsortedElement = vector.findWithIndex(unsortedElementIndex);
             int currentSortedElementIndex  = unsortedElementIndex - 1;
             while (currentSortedElementIndex >= 0 &&
-                    (vector.findWithIndex(currentSortedElementIndex).getCidade().compareTo(unsortedElement.getCidade()) > 0)) {
+                    (collator.compare(vector.findWithIndex(currentSortedElementIndex).getCidade(), unsortedElement.getCidade()) > 0)) {
                 vector.insert(vector.findWithIndex(currentSortedElementIndex), currentSortedElementIndex + 1);
                 currentSortedElementIndex--;
             }

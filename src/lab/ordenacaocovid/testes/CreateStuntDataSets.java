@@ -54,7 +54,7 @@ public class CreateStuntDataSets {
                 "Alvorada",
                 "Castanhal",
                 "Zé Doca",
-                "Alvaro de Carvalho",
+                "Álvaro de Carvalho",
                 "Maceió",
                 "Florianópolis",
                 "Olinda",
@@ -72,7 +72,7 @@ public class CreateStuntDataSets {
         int size = 10;
         Vector<CovidData> data = new Vector<CovidData>(size);
         String[] citys = new String[] {
-                "Alvaro de Carvalho",
+                "Álvaro de Carvalho",
                 "Alvorada",
                 "Castanhal",
                 "Florianópolis",
@@ -90,4 +90,28 @@ public class CreateStuntDataSets {
         }
         return data;
     }
+
+    public static Vector<CovidData> generateTotallyUnorderedCitysVector() {
+        int size = 10;
+        Vector<CovidData> data = new Vector<CovidData>(size);
+        String[] citys = new String[] {
+                "Zé Doca",
+                "São Paulo",
+                "Rio de Janeiro",
+                "Palmas",
+                "Olinda",
+                "Maceió",
+                "Florianópolis",
+                "Castanhal",
+                "Alvorada",
+                "Álvaro de Carvalho"
+        };
+
+        for (int i = 0; i < size; i++) {
+            data.add(new CovidData(), i);
+            data.findWithIndex(i).setCidade(citys[i]);
+        }
+        return data;
+    }
+
 }

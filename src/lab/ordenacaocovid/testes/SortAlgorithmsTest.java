@@ -43,26 +43,55 @@ public class SortAlgorithmsTest {
     // ---------------- //
 
     @Test
-    public void shouldSortDeathsInSelectionSort() {
+    public void shouldSortDeathsInSelectionSortIncrease() {
         Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedDeathsVector();
         Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedDeathsVector();
-        SelectionSort.ordenarPorObitos(dataUnsorted);
+        SelectionSort.ordenarPorObitos(dataUnsorted, SelectionSort.INCREASE);
         for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
     }
 
     @Test
-    public void shouldSortConfirmedsInSelectionSort() {
+    public void shouldSortDeathsInSelectionSortDecrease() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateUnorderedDeathsVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateOrderedDeathsVector();
+        SelectionSort.ordenarPorObitos(dataUnsorted, SelectionSort.DECREASE);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+    @Test
+    public void shouldSortConfirmedsInSelectionSortIncrease() {
         Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedConfirmedVector();
         Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedConfirmedVector();
-        SelectionSort.ordenarPorCasos(dataUnsorted);
+        SelectionSort.ordenarPorCasos(dataUnsorted, SelectionSort.INCREASE);
         for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
     }
 
     @Test
-    public void shouldSortCitysInSelectionSort() {
+    public void shouldSortConfirmedsInSelectionSortDecrease() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateUnorderedConfirmedVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateOrderedConfirmedVector();
+        SelectionSort.ordenarPorCasos(dataUnsorted, SelectionSort.DECREASE);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+
+    @Test
+    public void shouldSortCitysInSelectionSortIncrease() {
         Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedCitysVector();
         Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedCitysVector();
-        SelectionSort.ordenarPorNomeDasCidades(dataUnsorted);
+        SelectionSort.ordenarPorNomeDasCidades(dataUnsorted, SelectionSort.INCREASE);
+        for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
+    }
+
+    @Test
+    public void shouldSortCitysInSelectionSortDecrease() {
+        Vector<CovidData> dataSorted = CreateStuntDataSets.generateTotallyUnorderedCitysVector();
+        Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateOrderedCitysVector();
+        SelectionSort.ordenarPorNomeDasCidades(dataUnsorted, SelectionSort.DECREASE);
+
+        System.out.println(dataSorted);
+        System.out.println(dataUnsorted);
+
         for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
     }
 
@@ -111,6 +140,12 @@ public class SortAlgorithmsTest {
         Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedCitysVector();
         Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateUnorderedCitysVector();
         MergeSort.sort(dataUnsorted, 0, dataUnsorted.size() - 1, MergeSort.CIDADES);
+
+
+        System.out.println(dataSorted);
+        System.out.println(dataUnsorted);
+
+
         for (int i = 0; i < dataSorted.size(); i++) Assertions.assertEquals(dataSorted.findWithIndex(i).toString(), dataUnsorted.findWithIndex(i).toString());
     }
 
@@ -148,7 +183,7 @@ public class SortAlgorithmsTest {
     // --------------------------- //
 
     @Test
-    public void shouldSortDeathsInQuick3Sort() {
+    public void tirashouldSortDeathsInQuick3Sort() {
         Vector<CovidData> dataSorted = CreateStuntDataSets.generateOrderedDeathsVector();
         Vector<CovidData> dataUnsorted = CreateStuntDataSets.generateOrderedDeathsVector();
         MergeSort.sort(dataUnsorted, 0, dataUnsorted.size() - 1, MergeSort.OBITOS);

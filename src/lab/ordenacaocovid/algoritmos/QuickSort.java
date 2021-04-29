@@ -3,12 +3,13 @@ package lab.ordenacaocovid.algoritmos;
 import lab.ordenacaocovid.utils.CovidData;
 import lab.ordenacaocovid.utils.Vector;
 
+import java.text.Collator;
+
 public class QuickSort {
 
     public static final int OBITOS = 0;
     public static final int CASOS = 1;
     public static final int CIDADES = 2;
-    private static final String MAX_VALUE = "ÿÿÿÿÿÿ";
 
     public static void sort(Vector<CovidData> vector, int start, int end, int type) {
         if(hasMoreElements(start, end)) {
@@ -56,10 +57,14 @@ public class QuickSort {
     }
 
     public static int particionaCidades(Vector<CovidData> vector, int start, int end) {
+
+        Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.NO_DECOMPOSITION);
+
         String pivot = vector.findWithIndex(end).getCidade();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade().compareTo(pivot) <= 0) {
+            if(collator.compare(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade(), pivot) < 0) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }

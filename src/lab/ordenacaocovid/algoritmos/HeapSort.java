@@ -3,6 +3,8 @@ package lab.ordenacaocovid.algoritmos;
 import lab.ordenacaocovid.utils.CovidData;
 import lab.ordenacaocovid.utils.Vector;
 
+import java.text.Collator;
+
 public class HeapSort {
 
     public static final int OBITOS = 0;
@@ -105,10 +107,13 @@ public class HeapSort {
         int left = getLeftIndex(index);
         int right = getRightIndex(index);
 
-        if(left <= HeapSort.heapSize && vector.findWithIndex(left).getCidade().compareTo(vector.findWithIndex(index).getCidade()) > 0) bigger = left;
+        Collator collator = Collator.getInstance();
+        collator.setStrength(Collator.NO_DECOMPOSITION);
+
+        if(left <= HeapSort.heapSize && collator.compare(vector.findWithIndex(left).getCidade(), vector.findWithIndex(index).getCidade()) > 0) bigger = left;
         else bigger = index;
 
-        if(right <= HeapSort.heapSize && vector.findWithIndex(right).getCidade().compareTo(vector.findWithIndex(bigger).getCidade()) > 0) bigger = right;
+        if(right <= HeapSort.heapSize && collator.compare(vector.findWithIndex(right).getCidade(), vector.findWithIndex(bigger).getCidade()) > 0) bigger = right;
 
         if(bigger != index) {
             exchangeElements(vector, index, bigger);
