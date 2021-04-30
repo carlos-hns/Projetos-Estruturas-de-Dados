@@ -5,84 +5,211 @@ public class Timer {
   private long temporaryInitialTime = 0;
   private long temporaryFinalTime = 0;
 
-  private final long[] insertionTime = new long[3];
-  private final long[] seletionTime = new long[3];
-  private final long[] mergeTime = new long[3];
-  private final long[] quickTime = new long[3];
-  private final long[] quickMedTime = new long[3];
-  private final long[] countingTime = new long[3];
-  private final long[] heapTime = new long[3];
+  public static final int MELHOR = 0;
+  public static final int MEDIO = 1;
+  public static final int PIOR = 2;
 
-  public void setTemporaryInitialTime(){
-    this.temporaryInitialTime = System.currentTimeMillis();
+  public final long[] insertionTimeObitos = new long[3];
+  public final long[] insertionTimeCasos = new long[3];
+  public final long[] insertionTimeCidades = new long[3];
+
+  public final long[] selectionTimeObitos = new long[3];
+  public final long[] selectionTimeCasos = new long[3];
+  public final long[] selectionTimeCidades = new long[3];
+
+  public final long[] mergeTimeObitos = new long[3];
+  public final long[] mergeTimeCasos = new long[3];
+  public final long[] mergeTimeCidades = new long[3];
+
+  public  final long[] quickTimeObitos = new long[3];
+  public  final long[] quickTimeCasos = new long[3];
+  public  final long[] quickTimeCidades = new long[3];
+
+  public  final long[] quickMedTimeObitos = new long[3];
+  public  final long[] quickMedTimeCasos = new long[3];
+  public  final long[] quickMedTimeCidades = new long[3];
+
+  public  final long[] countingTimeObitos = new long[3];
+  public  final long[] countingTimeCasos = new long[3];
+
+  public  final long[] heapTimeObitos = new long[3];
+  public  final long[] heapTimeCasos = new long[3];
+  public  final long[] heapTimeCidades = new long[3];
+
+  public void setTemporaryInitialTime() {
+    temporaryInitialTime = System.currentTimeMillis();
   }
 
   public void setTemporaryFinalTime() {
-    this.temporaryFinalTime = System.currentTimeMillis() - getTemporaryInitialTime();
+    temporaryFinalTime = System.currentTimeMillis() - getTemporaryInitialTime();
   }
 
-  public void setInsertionTime(int index, long insertionTime) {
-    this.insertionTime[index] = insertionTime;
+  public void setInsertionTimeObitos(int index, long insertionTime) {
+    this.insertionTimeObitos[index] = insertionTime;
   }
 
-  public void setSeletionTime(int index, long seletionTime) {
-    this.seletionTime[index] = seletionTime;
-  }
-  
-  public void setMergeTime(int index, long mergeTime) {
-    this.mergeTime[index] = mergeTime; 
+  public void setInsertionTimeCasos(int index, long insertionTime) {
+    this.insertionTimeCasos[index] = insertionTime;
   }
 
-  public void setQuickTime(int index, long quickTime) {
-    this.quickTime[index] = quickTime; 
+  public void setInsertionTimeCidades(int index, long insertionTime) {
+    this.insertionTimeCidades[index] = insertionTime;
   }
 
-  public void setQUickMedTime(int index, long quickMedTime) {
-    this.quickMedTime[index] = quickMedTime; 
+  public void setselectionTimeObitos(int index, long selectionTime) {
+    this.selectionTimeObitos[index] = selectionTime;
   }
 
-  public void setCountingTime(int index, long countingTime) {
-    this.countingTime[index] = countingTime; 
+  public void setselectionTimeCasos(int index, long selectionTime) {
+    this.selectionTimeCasos[index] = selectionTime;
   }
 
-  public void setHeapTime(int index, long heapTime) {
-    this.heapTime[index] = heapTime; 
+  public void setselectionTimeCidades(int index, long selectionTime) {
+    this.selectionTimeCidades[index] = selectionTime;
   }
 
-   public long getTemporaryInitialTime() {
+  public void setMergeTimeObitos(int index, long mergeTime) {
+    this.mergeTimeObitos[index] = mergeTime;
+  }
+
+  public void setMergeTimeCasos(int index, long mergeTime) {
+    this.mergeTimeCasos[index] = mergeTime;
+  }
+
+  public void setMergeTimeCidades(int index, long mergeTime) {
+    this.mergeTimeCidades[index] = mergeTime;
+  }
+
+  public void setQuickTimeObitos(int index, long quickTime) {
+    this.quickTimeObitos[index] = quickTime;
+  }
+
+  public void setQuickTimeCasos(int index, long quickTime) {
+    this.quickTimeCasos[index] = quickTime;
+  }
+
+  public void setQuickTimeCidades(int index, long quickTime) {
+    this.quickTimeCidades[index] = quickTime;
+  }
+
+  public void setQUickMedTimeObitos(int index, long quickMedTime) {
+    this.quickMedTimeObitos[index] = quickMedTime;
+  }
+
+  public void setQUickMedTimeCasos(int index, long quickMedTime) {
+    this.quickMedTimeCasos[index] = quickMedTime;
+  }
+
+  public void setQUickMedTimeCidades(int index, long quickMedTime) {
+    this.quickMedTimeCidades[index] = quickMedTime;
+  }
+
+  public void setCountingTimeObitos(int index, long countingTime) {
+    this.countingTimeObitos[index] = countingTime;
+  }
+
+  public void setCountingTimeCasos(int index, long countingTime) {
+    this.countingTimeCasos[index] = countingTime;
+  }
+
+  public void setHeapTimeObitos(int index, long heapTime) {
+    this.heapTimeObitos[index] = heapTime;
+  }
+
+  public void setHeapTimeCasos(int index, long heapTime) {
+    this.heapTimeCasos[index] = heapTime;
+  }
+
+  public void setHeapTimeCidades(int index, long heapTime) {
+    this.heapTimeCidades[index] = heapTime;
+  }
+
+  public  long getTemporaryInitialTime() {
     return temporaryInitialTime;
   }
 
   public long getTemporaryFinalTime() {
     return temporaryFinalTime;
   }
-  
-  public long getSeletionTime(int index) {
-    return seletionTime[index];
+
+  public long getselectionTimeObitos(int index) {
+    return selectionTimeObitos[index];
   }
 
-  public long getInsertionTime(int index) {
-    return insertionTime[index];
+  public long getselectionTimeCasos(int index) {
+    return selectionTimeCasos[index];
   }
 
-  public long getMergeTime(int index) {
-    return mergeTime[index];
+  public long getselectionTimeCidades(int index) {
+    return selectionTimeCidades[index];
   }
-  
-  public long getQuickTime(int index) {
-    return quickTime[index];
+
+  public long getInsertionTimeObitos(int index) {
+    return insertionTimeObitos[index];
   }
-  
-  public long getQuickMedTime(int index) {
-    return quickMedTime[index];
+
+  public long getInsertionTimeCasos(int index) {
+    return insertionTimeCasos[index];
   }
-  
-  public long getCountingTime(int index) {
-    return countingTime[index];
+
+  public long getInsertionTimeCidades(int index) {
+    return insertionTimeCidades[index];
   }
-  
-  public long getHeapTime(int index) {
-    return heapTime[index];
+
+  public long getMergeTimeObitos(int index) {
+    return mergeTimeObitos[index];
   }
-  
+
+  public long getMergeTimeCasos(int index) {
+    return mergeTimeCasos[index];
+  }
+
+  public long getMergeTimeCidades(int index) {
+    return mergeTimeCidades[index];
+  }
+
+  public long getQuickTimeObitos(int index) {
+    return quickTimeObitos[index];
+  }
+
+  public long getQuickTimeCasos(int index) {
+    return quickTimeCasos[index];
+  }
+
+  public long getQuickTimeCidades(int index) {
+    return quickTimeCidades[index];
+  }
+
+  public long getQuickMedTimeObitos(int index) {
+    return quickMedTimeObitos[index];
+  }
+
+  public long getQuickMedTimeCasos(int index) {
+    return quickMedTimeCasos[index];
+  }
+
+  public long getQuickMedTimeCidades(int index) {
+    return quickMedTimeCidades[index];
+  }
+
+  public long getCountingTimeObitos(int index) {
+    return countingTimeObitos[index];
+  }
+
+  public long getCountingTimeCasos(int index) {
+    return countingTimeCasos[index];
+  }
+
+  public long getHeapTimeObitos(int index) {
+    return heapTimeObitos[index];
+  }
+
+  public long getHeapTimeCasos(int index) {
+    return heapTimeCasos[index];
+  }
+
+  public long getHeapTimeCidades(int index) {
+    return heapTimeCidades[index];
+  }
+
 }
