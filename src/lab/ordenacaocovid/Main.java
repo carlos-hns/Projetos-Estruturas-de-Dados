@@ -15,7 +15,7 @@ public class Main {
         String pathDadosFinais = "/home/carlos/IdeaProjects/Projetos ED/src/lab/ordenacaocovid/data/dadosfinais";
 
         System.out.println("Inicio");
-        //criarArquivosDeDadosBrutos(pathDadosBrutos);
+        criarArquivosDeDadosBrutos(pathDadosBrutos);
         ordenarDadosECalcularTempos(pathDadosBrutos, pathDadosFinais);
         System.out.println("Fim");
 
@@ -80,13 +80,13 @@ public class Main {
 
     public static void ordenarDadosECalcularTempos(String pathDadosLimpos, String pathDadosFinais) {
         Timer timer = new Timer();
-        //calcularCountingSort(pathDadosLimpos, pathDadosFinais, timer);
-        //calcularHeapSort(pathDadosLimpos, pathDadosFinais, timer);
-        //calcularInsertionSort(pathDadosLimpos, pathDadosFinais, timer);
-        //calcularMergeSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularCountingSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularHeapSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularInsertionSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularMergeSort(pathDadosLimpos, pathDadosFinais, timer);
         calcularQuickSortMedianaDeTresSort(pathDadosLimpos, pathDadosFinais, timer);
-        //calcularQuickSort(pathDadosLimpos, pathDadosFinais, timer);
-        //calcularSelectionSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularQuickSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularSelectionSort(pathDadosLimpos, pathDadosFinais, timer);
         TimerWriter.writeTime(timer, pathDadosFinais + "/tempos.txt");
     }
 
@@ -414,12 +414,13 @@ public class Main {
         timer.setQUickMedTimeObitos(Timer.MELHOR, timer.getTemporaryFinalTime());
         CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-melhor-obitos.csv", Strings.CABECALHO);
 
-//        dados = CSVReader.lerDados(Strings.PATH_CONFIRMADOS_MELHOR.replace("{0}", pathDadosBrutos));
-//        timer.setTemporaryInitialTime();
-//        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.CASOS);
-//        timer.setTemporaryFinalTime();
-//        timer.setQUickMedTimeCasos(Timer.MELHOR, timer.getTemporaryFinalTime());
-//        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-melhor-casosconfirmados.csv", Strings.CABECALHO);
+        // Aqui
+        dados = CSVReader.lerDados(Strings.PATH_CONFIRMADOS_MELHOR.replace("{0}", pathDadosBrutos));
+        timer.setTemporaryInitialTime();
+        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.CASOS);
+        timer.setTemporaryFinalTime();
+        timer.setQUickMedTimeCasos(Timer.MELHOR, timer.getTemporaryFinalTime());
+        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-melhor-casosconfirmados.csv", Strings.CABECALHO);
 
         dados = CSVReader.lerDados(Strings.PATH_CIDADES_MELHOR.replace("{0}", pathDadosBrutos));
         timer.setTemporaryInitialTime();
@@ -446,23 +447,24 @@ public class Main {
         timer.setQUickMedTimeCasos(Timer.PIOR, timer.getTemporaryFinalTime());
         CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-pior-casosconfirmados.csv", Strings.CABECALHO);
 
-//        dados = CSVReader.lerDados(Strings.PATH_CIDADES_PIOR.replace("{0}", pathDadosBrutos));
-//        timer.setTemporaryInitialTime();
-//        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.CIDADES);
-//        timer.setTemporaryFinalTime();
-//        timer.setQUickMedTimeCidades(Timer.PIOR, timer.getTemporaryFinalTime());
-//        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-pior-cidades.csv", Strings.CABECALHO);
+        // Aqui
+        dados = CSVReader.lerDados(Strings.PATH_CIDADES_PIOR.replace("{0}", pathDadosBrutos));
+        timer.setTemporaryInitialTime();
+        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.CIDADES);
+        timer.setTemporaryFinalTime();
+        timer.setQUickMedTimeCidades(Timer.PIOR, timer.getTemporaryFinalTime());
+        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-pior-cidades.csv", Strings.CABECALHO);
 
         System.out.println("Calculando os médios casos do QuickSort Mediana de Três...");
 
         // Médios Casos
 
-//        dados = CSVReader.lerDados(Strings.PATH_OBITOS_MEDIO.replace("{0}", pathDadosBrutos));
-//        timer.setTemporaryInitialTime();
-//        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.OBITOS);
-//        timer.setTemporaryFinalTime();
-//        timer.setQUickMedTimeObitos(Timer.MEDIO, timer.getTemporaryFinalTime());
-//        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-medio-obitos.csv", Strings.CABECALHO);
+        dados = CSVReader.lerDados(Strings.PATH_OBITOS_MEDIO.replace("{0}", pathDadosBrutos));
+        timer.setTemporaryInitialTime();
+        Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.OBITOS);
+        timer.setTemporaryFinalTime();
+        timer.setQUickMedTimeObitos(Timer.MEDIO, timer.getTemporaryFinalTime());
+        CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-medio-obitos.csv", Strings.CABECALHO);
 
         dados = CSVReader.lerDados(Strings.PATH_CONFIRMADOS_MEDIO.replace("{0}", pathDadosBrutos));
         timer.setTemporaryInitialTime();
@@ -475,17 +477,11 @@ public class Main {
         timer.setTemporaryInitialTime();
         Quick3Sort.sort(dados, 0, dados.size() - 1, Quick3Sort.CIDADES);
         timer.setTemporaryFinalTime();
-        timer.setQuickTimeCidades(Timer.MEDIO, timer.getTemporaryFinalTime());
+        timer.setQUickMedTimeCidades(Timer.MEDIO, timer.getTemporaryFinalTime());
         CSVWriter.escreverDados(dados, pathDadosFinais + "/quick3sort-medio-cidades.csv", Strings.CABECALHO);
 
         System.out.println("QuickSort Mediana de Três calculado com sucesso!");
 
-        System.out.println(timer.getTemporaryInitialTime());
-        System.out.println(timer.getTemporaryFinalTime());
-        System.out.println(timer.getTemporaryFinalTime() - timer.getTemporaryInitialTime());
-        System.out.println(Arrays.toString(timer.quickMedTimeObitos));
-        System.out.println(Arrays.toString(timer.quickMedTimeCasos));
-        System.out.println(Arrays.toString(timer.quickMedTimeCidades));
     }
 
     public static void calcularQuickSort(String pathDadosBrutos, String pathDadosFinais, Timer timer) {

@@ -13,7 +13,7 @@ public class Quick3Sort {
 
     public static void sort(Vector<CovidData> vector, int start, int end, int type) {
         if(hasMoreElements(start, end)) {
-            int pivot3Index;
+            int pivot3Index = 0;
             int pivotIndex = 0;
             switch (type) {
                 case OBITOS:
@@ -87,8 +87,9 @@ public class Quick3Sort {
     }
 
     public static int findPivotObitosIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
+
         int middleIndex = 0;
-        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (endIndex % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
         int start = vector.findWithIndex(startIndex).getMortes();
@@ -122,7 +123,7 @@ public class Quick3Sort {
 
     public static int findPivotCasosIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
         int middleIndex = 0;
-        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (endIndex % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
         int start = vector.findWithIndex(startIndex).getCasosConfirmados();
@@ -156,7 +157,7 @@ public class Quick3Sort {
 
     public static int findPivotCidadesIndex(Vector<CovidData> vector, int startIndex, int endIndex) {
         int middleIndex = 0;
-        if (vector.size() % 2 == 0) middleIndex = (endIndex / 2) - 1;
+        if (endIndex % 2 == 0) middleIndex = (endIndex / 2) - 1;
         else middleIndex  = endIndex / 2;
 
         String start = vector.findWithIndex(startIndex).getCidade();
