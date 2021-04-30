@@ -7,6 +7,7 @@ public class CountingSort {
 
     public static Vector<CovidData> ordenarPorObitos(Vector<CovidData> originalVector) {
         Vector<CovidData> exitVector = new Vector<CovidData>(originalVector.size());
+        exitVector.setSize();
 
         int numberMaximum = findMaximumNumberObitos(originalVector);
         int[] vectorOfPositionsInExitVector = new int[numberMaximum + 1];
@@ -30,6 +31,7 @@ public class CountingSort {
 
     public static Vector<CovidData> ordenarPorCasos(Vector<CovidData> originalVector) {
         Vector<CovidData> exitVector = new Vector<CovidData>(originalVector.size());
+        exitVector.setSize();
 
         int numberMaximum = findMaximumNumberCasos(originalVector);
         int[] vectorOfPositionsInExitVector = new int[numberMaximum + 1];

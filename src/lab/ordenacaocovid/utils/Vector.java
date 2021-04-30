@@ -66,6 +66,10 @@ public class Vector<T> {
         this.elements[position] = element;
     }
 
+    public void setSize() {
+        this.size = this.capacity;
+    }
+
     public int size() {
         return this.size;
     }

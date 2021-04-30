@@ -65,7 +65,7 @@ public class SelectionSort {
 
                 boolean compareResult;
                 if(typeSort == SelectionSort.INCREASE) compareResult = collator.compare(vector.findWithIndex(j).getCidade(), vector.findWithIndex(lowestCovidDataIndex).getCidade()) < 0;
-                else compareResult = compareResult = collator.compare(vector.findWithIndex(j).getCidade(), vector.findWithIndex(lowestCovidDataIndex).getCidade()) > 0;
+                else compareResult = collator.compare(vector.findWithIndex(j).getCidade(), vector.findWithIndex(lowestCovidDataIndex).getCidade()) > 0;
 
                 if (compareResult) {
                     lowestCovidDataIndex = j;
