@@ -11,14 +11,15 @@ import java.util.Arrays;
 public class Main {
     public static void main(String[] args) {
 
-        String pathDadosBrutos = "/home/carlos/IdeaProjects/Projetos ED/src/lab/ordenacaocovid/data/dadosbrutos";
-        String pathDadosFinais = "/home/carlos/IdeaProjects/Projetos ED/src/lab/ordenacaocovid/data/dadosfinais";
+        System.out.println("Iniciando...");
 
-        System.out.println("Inicio");
+        String pathDadosBrutos = args[0] + "/data/dadosbrutos";
+        String pathDadosFinais = args[0] + "/data/dadosfinais";
+
         criarArquivosDeDadosBrutos(pathDadosBrutos);
         ordenarDadosECalcularTempos(pathDadosBrutos, pathDadosFinais);
-        System.out.println("Fim");
 
+        System.out.println("Finalizando...");
     }
 
     public static void criarArquivosDeDadosBrutos(String pathDadosBrutos) {
@@ -84,10 +85,13 @@ public class Main {
         calcularHeapSort(pathDadosLimpos, pathDadosFinais, timer);
         calcularInsertionSort(pathDadosLimpos, pathDadosFinais, timer);
         calcularMergeSort(pathDadosLimpos, pathDadosFinais, timer);
-        calcularQuickSortMedianaDeTresSort(pathDadosLimpos, pathDadosFinais, timer);
         calcularQuickSort(pathDadosLimpos, pathDadosFinais, timer);
         calcularSelectionSort(pathDadosLimpos, pathDadosFinais, timer);
+        calcularQuickSortMedianaDeTresSort(pathDadosLimpos, pathDadosFinais, timer);
+
+        System.out.println("\nEscrevendo tempos...");
         TimerWriter.writeTime(timer, pathDadosFinais + "/tempos.txt");
+        System.out.println("Tempos escritos com sucesso!...");
     }
 
     public static void calcularCountingSort(String pathDadosBrutos, String pathDadosFinais, Timer timer) {

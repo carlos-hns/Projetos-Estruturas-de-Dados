@@ -15,14 +15,14 @@ public class QuickSort {
         if(hasMoreElements(start, end)) {
             int pivotIndex = 0;
             switch (type) {
+                case CIDADES:
+                    pivotIndex = particionaCidades(vector, start, end);
+                    break;
                 case OBITOS:
                     pivotIndex = particionaObitos(vector, start, end);
                     break;
                 case CASOS:
                     pivotIndex = particionaCasos(vector, start, end);
-                    break;
-                case CIDADES:
-                    pivotIndex = particionaCidades(vector, start, end);
                     break;
             }
             sort(vector, start, pivotIndex - 1, type);
@@ -64,7 +64,7 @@ public class QuickSort {
         String pivot = vector.findWithIndex(end).getCidade();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
-            if(collator.compare(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade(), pivot) < 0) {
+            if(collator.compare(vector.findWithIndex(largerItemsThanPivotIndexController).getCidade(), pivot) <= 0) {
                 smallerItemsThanPivotIndexController++;
                 exchangeElements(vector, smallerItemsThanPivotIndexController, largerItemsThanPivotIndexController);
             }
