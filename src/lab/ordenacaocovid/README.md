@@ -35,7 +35,7 @@ Análise dos algoritmos de ordenação
 
 6. Com os arquivos descompactados, você terá um arquivo chamado caso.csv e uma pasta chamada CovidAnalyser, insira o arquivo caso.csv na pasta de dadosbrutos, você pode achá-la seguindo esta estrutura CovidAnalyser > data > dadosbrutos
 
-7. Abra seu terminal/cmd/powershell percorra o caminho até a pasta onde se encontra o jar chamado CovidAnalyser.jar, use o comando cd "caminhho" para esse propósito.
+7. Abra seu terminal/cmd/powershell percorra o caminho até a pasta onde se encontra o jar chamado CovidAnalyser.jar, use o comando cd "caminho" para esse propósito.
 
 8. Execute o seguinte comando: java -jar CovidAnalyser.jar "caminho-da-pasta-extraida-que-possui-o-jar-e-a-pasta-data"
 
