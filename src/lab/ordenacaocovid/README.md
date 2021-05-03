@@ -35,13 +35,15 @@ Análise dos algoritmos de ordenação
 
 6. Com os arquivos descompactados, você terá um arquivo chamado caso.csv e uma pasta chamada CovidAnalyser, insira o arquivo caso.csv na pasta de dadosbrutos, você pode achá-la seguindo esta estrutura CovidAnalyser > data > dadosbrutos
 
-7. Abra seu terminal/cmd/powershell percorra o caminho até a pasta onde se encontra o jar chamado CovidAnalyser.jar, use o comando cd "caminhho" para esse propósito.
+7. Abra seu terminal/cmd/powershell percorra o caminho até a pasta onde se encontra o jar chamado CovidAnalyser.jar, use o comando cd "caminho" para esse propósito.
 
 8. Execute o seguinte comando: java -jar CovidAnalyser.jar "caminho-da-pasta-extraida-que-possui-o-jar-e-a-pasta-data"
 
 OBS: se estiver no windows provavelmente será ./CovidAnalyser.jar ao invés de CovidAnalyser.jar
 
 OBS 2: As aspas são obrigatórias e as barras do caminho devem ser invertidas. Exemplo: /home/carlos/IdeaProjects/Projetos ED, ao invés de,  C:\carlos\IdeaProjects\Projetos ED
+
+OBS 3: Se o comando java não for encontrado, provavelmente sua variável de ambiente JAVA_HOME não está setada no PATH, você pode dar uma pesquisada a respeito, não se preocupe é bem fácil de arrumar isso
 
 Exemplo: java -jar CovidAnalyser.jar "/home/carlos/IdeaProjects/Projetos ED/out/artifacts/covidanalyser"
 
