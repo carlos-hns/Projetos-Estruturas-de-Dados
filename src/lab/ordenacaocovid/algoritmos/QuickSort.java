@@ -15,14 +15,14 @@ public class QuickSort {
         if(hasMoreElements(start, end)) {
             int pivotIndex = 0;
             switch (type) {
-                case CIDADES:
-                    pivotIndex = particionaCidades(vector, start, end);
-                    break;
                 case OBITOS:
                     pivotIndex = particionaObitos(vector, start, end);
                     break;
                 case CASOS:
                     pivotIndex = particionaCasos(vector, start, end);
+                    break;
+                case CIDADES:
+                    pivotIndex = particionaCidades(vector, start, end);
                     break;
             }
             sort(vector, start, pivotIndex - 1, type);
@@ -44,7 +44,7 @@ public class QuickSort {
     }
 
     public static int particionaCasos(Vector<CovidData> vector, int start, int end) {
-        int pivot = vector.findWithIndex(end).getMortes();
+        int pivot = vector.findWithIndex(end).getCasosConfirmados();
         int smallerItemsThanPivotIndexController = start - 1;
         for (int largerItemsThanPivotIndexController = start; largerItemsThanPivotIndexController < end; largerItemsThanPivotIndexController++) {
             if(vector.findWithIndex(largerItemsThanPivotIndexController).getCasosConfirmados() <= pivot) {
