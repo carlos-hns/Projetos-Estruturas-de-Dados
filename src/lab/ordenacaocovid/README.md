@@ -43,6 +43,8 @@ OBS: se estiver no windows provavelmente será ./CovidAnalyser.jar ao invés de 
 
 OBS 2: As aspas são obrigatórias e as barras do caminho devem ser invertidas. Exemplo: /home/carlos/IdeaProjects/Projetos ED, ao invés de,  C:\carlos\IdeaProjects\Projetos ED
 
+OBS 3: Se o comando java não for encontrado, provavelmente sua variável de ambiente JAVA_HOME não está setada no PATH, você pode dar uma pesquisada a respeito, não se preocupe é bem fácil de arrumar isso
+
 Exemplo: java -jar CovidAnalyser.jar "/home/carlos/IdeaProjects/Projetos ED/out/artifacts/covidanalyser"
 
 9. Os dados gerados na pasta data/dadosfinais são os arquivos csv que foram ordenados no processo para cada variável e cada caso. Na pasta data/dadosbrutos ficam todos os arquivos que foram gerados no processo e foram usados como fonte de dados, por exemplo, caso-limpo que é o arquivo gerado ao filtrar os dados. O arquivo de tempos fica na pasta data/dadosfinais/tempos.txt.
